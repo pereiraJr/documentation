@@ -6,23 +6,29 @@ category:
   - developing
 keywords: pantheon workflow, workflow, dev, test, live, environment, pantheon environments, multidev, how to deploy, deploy, what is a commit, commit, write permission, write to live, why cant i write to live, write access, commits, separate environment, environment, environments
 subdocs:
+ - Pantheon
  - Kalamuna
+
 ---
-This: !(Pantheon Environments)[ /source/docs/assets/images/b-d-t-l.png ] impacting the live site that's available to the world. Additional development environments are available with [Multidev](/docs/articles/sites/multidev/). Maintaining your code,
+This: !(Pantheon Environments)[ /source/docs/assets/images/b-d-t-l.png ] impacting the live site that's available to the world. Additional development environments are available with [Multidev](/docs/articles/sites/multidev/). Maintaining your code, database, and files
 
 
 ## Code Up, Content Down
 
-Pantheon enforces a code deployment pattern through Dev, Test, and Live on all sites. Code may only enter through  from Dev to Test to Live. We recommend  and content down from Live to Test, while keeping development database and file archive artifacts to develop against in Development environments.
+Pantheon enforces a code deployment pattern through Dev, Test, and Live on all sites. Code may only enter live through  from Dev to Test to Live. We recommend  and content down from Live to Test, while keeping development database and file archive artifacts to develop against in Development environments.
 
 - **Code** includes plugins, modules, themes, CSS, JS—anything that's under Git version control.
 - **Content** includes files not under Git version control, like images and pdfs, and the database.
 
-### 1. Commit Code in Dev
+### 1. Commit Code in a Development environment
 
-Modify the codebase in the Dev or a Multidev environment via [SFTP](/docs/articles/sites/code/developing-directly-with-sftp-mode/) or [Git](/docs/articles/local/starting-with-git/). All new and modified code is tracked in the git repo and exposed in the dashboard. 
+Modify the codebase in a Dev, or Multidev environment via [SFTP](/docs/articles/sites/code/developing-directly-with-sftp-mode/) or push code from or Local with [Git](/docs/articles/local/starting-with-git/). All new and modified code is tracked in the git repo and exposed in the dashboard.
 Rules of thumb for committing include:
- -  
+ - Commit often
+ - Use, accurate, thorough commit messages. (ctrl/cmd + return will add a line to your message)
+ - Export configuration to code if possible using Drupal [features](https://drupal.org/project/features), [configuration management](https://drupal.org/project/configuration), or [CINC](https://drupal.org/project/cinc), or WordPress [WP-CFM](https://wordpress.org/plugins/wp-cfm/).
+ - Merge into Master at least daily.
+
 ### 2. Combine fresh code from Dev and fresh content from Live in Test
 
 When you're ready to test a new set of changes, take your code from Dev, your content from Live, and freshly combine them in Test to be absolutely certain that your deployment to Live will go as planned.
@@ -39,7 +45,7 @@ After testing your changes, you can take them live. Deploying code from Test to 
 ![Site Dashboard, live environment](/source/docs/assets/images/desk_images/376218.png)
 
 
-## Uncommon Workflows
+## Other Workflows
 
 Typically, you'll create content in the **Live** environment. However, when deploying a newly-built site for the very first time, it is often necessary to push the Content "up" which is the opposite of the normal content workflow. In this uncommon case, you may move the database and files (e.g. images) from Dev or Test to Live via the  **Workflow** > **Clone** areas of the Dashboard.
 

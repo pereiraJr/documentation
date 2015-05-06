@@ -11,4 +11,4 @@ authors:
 ---
 
 Andrew Mallis of Kalamuna shared this on the power-users group.
-We thought it was kind of awesome but also one of many in a fractal.
+We thought it was kind of awesome but also one of many.
