@@ -1,24 +1,28 @@
 ---
 title: Using the Pantheon Workflow
-description: Understand how to use separate Dev, Test, and Live environments while learning more about the Pantheon Workflow.
+description: Understand how to use separate Dev, Test, and Live environments while learning to effectively manage code, and data, between three environments by using the Pantheon Workflow.
 category:
   - going-live
   - developing
 keywords: pantheon workflow, workflow, dev, test, live, environment, pantheon environments, multidev, how to deploy, deploy, what is a commit, commit, write permission, write to live, why cant i write to live, write access, commits, separate environment, environment, environments
+subdocs:
+ - Kalamuna
 ---
-Every Pantheon site comes with three environments: Dev, Test, and Live. Separate Dev, Test, and Live environments allow you to develop and test your site without impacting the live site that's available to the world. Additional development environments are available with [Multidev](/docs/articles/sites/multidev/).
+This: !(Pantheon Environments)[ /source/docs/assets/images/b-d-t-l.png ] impacting the live site that's available to the world. Additional development environments are available with [Multidev](/docs/articles/sites/multidev/). Maintaining your code,
 
 
-## Code Moves Up, Content Moves Down
+## Code Up, Content Down
 
-The core of the Pantheon Workflow is to move code up from Dev to Test to Live and content down from Live to Test to Dev.
+Pantheon enforces a code deployment pattern through Dev, Test, and Live on all sites. Code may only enter through  from Dev to Test to Live. We recommend  and content down from Live to Test, while keeping development database and file archive artifacts to develop against in Development environments.
 
 - **Code** includes plugins, modules, themes, CSS, JS—anything that's under Git version control.
 - **Content** includes files not under Git version control, like images and pdfs, and the database.
 
 ### 1. Commit Code in Dev
 
-Update code in the Dev environment via [SFTP](/docs/articles/sites/code/developing-directly-with-sftp-mode/) or [Git](/docs/articles/local/starting-with-git/).
+Modify the codebase in the Dev or a Multidev environment via [SFTP](/docs/articles/sites/code/developing-directly-with-sftp-mode/) or [Git](/docs/articles/local/starting-with-git/). All new and modified code is tracked in the git repo and exposed in the dashboard. 
+Rules of thumb for committing include:
+ -  
 ### 2. Combine fresh code from Dev and fresh content from Live in Test
 
 When you're ready to test a new set of changes, take your code from Dev, your content from Live, and freshly combine them in Test to be absolutely certain that your deployment to Live will go as planned.
