@@ -1,6 +1,6 @@
 ---
-title: Using the Pantheon Workflow
-description: Understand how to use separate Dev, Test, and Live environments while learning to effectively manage code, and data, between three environments by using the Pantheon Workflow.
+title: Pantheon Workflows
+description: Effectively manage code, and data, between Pantheon environments by using workflows built by and for professionals. Add your own workflow to this directory.
 category:
   - going-live
   - developing
@@ -10,8 +10,31 @@ subdocs:
  - Kalamuna
 
 ---
-This: !(Pantheon Environments)[ /source/docs/assets/images/b-d-t-l.png ] impacting the live site that's available to the world. Additional development environments are available with [Multidev](/docs/articles/sites/multidev/). Maintaining your code, database, and files
+Axiom 1: Multiple environments is a must. You need at least three if working alone, and we recommend and provide with [Multidev](/docs/articles/sites/multidev/) at least n+3 environments where n = the number of active collaborators on a site. Maintaining your site's code, database, and files between these environments requires knowledge, planning, and skill.
 
+## Environment Elements
+![Cyberduck at login](/source/docs/assets/images/elements.png)
+
+ - `/code`, in your .git repository
+ - `/files`, in Valhalla, the Pantheon filesystem, and symlinked to `/sites/default/files` or `/wp-content/uploads`.
+ - Database
+
+ Pantheon takes care of the:
+
+ - PHP
+ - nginx
+ - mariadb
+ - varnish
+ - solr
+ - redis
+
+ To you, however, the envrionment is made up of:
+
+ - Code
+ - Configuration, stored in the database and codebase
+ - Content, stored in the Database and Valhalla
+
+## Rule of Thumb
 
 ## Code Up, Content Down
 

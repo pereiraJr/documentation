@@ -46,7 +46,16 @@
                     {{ page.blocks.content|raw }}
                 </div>
           </div>
-
+            <div class=col-md-3>
+              {% if page.subdoc %}
+       <div class="container subdoc-list">
+           <div class="row">
+               <div class="col-md-8 col-md-offset-2">
+                   {{ page.subdoc|raw}}{% endif %}
+               </div>
+           </div>
+       </div>
+            </div>
             <div class="col-md-3">
               <div class="pio-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
                 <div id="toc"><h3>Contents</h3>
