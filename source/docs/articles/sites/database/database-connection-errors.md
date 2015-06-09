@@ -7,9 +7,9 @@ keywords: db error, db connection, database, database connection error, can't co
 ---
 If your site suddenly reverts to `install.php`, or you see database connection errors like the following:
  ![](/source/docs/assets/images/desk_images/64774.png)
-
-    Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock'...).
-
+```sql
+Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock'...).
+```
 This indicates that there's an issue connecting to the Pantheon database. There are two common causes.
 
 ## Overwriting Core

@@ -75,12 +75,12 @@ The [Amazon S3 CORS](https://drupal.org/project/amazons3_cors) module can be con
 ## Installation
 
 This is not the only way to install this, but these directions are known good and assume that you have an AWS S3 bucket set up.
-
-    drush @pantheon.SITENAME.dev dl media-2.x-dev amazons3 amazons3_cors devel jquery_update awssdk views file_entity
-    drush @pantheon.SITENAME.dev make sites/all/modules/awssdk/awssdk.make --no-core
-    drush @pantheon.SITENAME.dev en devel amazons3 amazons3_cors media jquery_update libraries awssdk views file_entity awssdk_ui
-    drush @pantheon.SITENAME.dev cc all
-
+```nginx
+drush @pantheon.SITENAME.dev dl media-2.x-dev amazons3 amazons3_cors devel jquery_update awssdk views file_entity
+drush @pantheon.SITENAME.dev make sites/all/modules/awssdk/awssdk.make --no-core
+drush @pantheon.SITENAME.dev en devel amazons3 amazons3_cors media jquery_update libraries awssdk views file_entity awssdk_ui
+drush @pantheon.SITENAME.dev cc all
+```
 - /admin/reports/status - Make sure AWSSDK reports a version number
 - /admin/reports/awssdk - Verify it's correct.
 - /admin/config/media/awssdk - Specified Amazon Web Services Key, Amazon Web Services Secret Key

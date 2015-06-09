@@ -44,22 +44,23 @@ You can also schedule your own jobs, execute existing jobs, and manage just abou
 
 One of the first things you'll want to do is test WP-Cron to make sure everything is working correctly. When you execute the command below, make sure to replace SITE_NAME with your site's name from your Pantheon Dashboard and provide the desired environment (Dev, Test, Live).
 
+````html
+$ terminus wp cron test --site=<site> --env=<env>
 ````
-$ terminus wp cron test --site=SITE_NAME --env=<dev|test|live>
-````
+<div class="alert alert-info" role="alert">
+<strong>Note</strong>: Replace <code>&lt;site&gt;</code> with your site name, and <code>&lt;env&gt;</code> with the environment (Dev, Test, or Live). You can see a list of all your sites by running <code>terminus sites list</code></div>
+
 
 If everything works correctly, the result will look like this:
 
-````
+```
 Success: WP-Cron spawning is working as expected.
-````
+```
 
 This lets you know that WP-Cron is working properly on your site. From here, you can run any cron-related command with [WP-CLI](http://wp-cli.org/commands/cron/ "wp-cli web site"). When using WP-CLI to manage your Pantheon hosted WordPress site, you should be using [Terminus](https://github.com/pantheon-systems/cli). The command format is as follows:
 
-````
-$ terminus wp cron <your wp-cron command and switches here>
-           --site=YOUR_SITE_NAME
-           --env=dev|test|live
+````html
+$ terminus wp cron <your wp-cron command and switches here> --site=<site> --env=<env>
 ````
 
 All `terminus wp` commands require a site name and environment to operate.
@@ -78,9 +79,9 @@ If you're looking for more control over your site's cron jobs, or you don't want
 ### Disable WP-Cron
 The first thing you'll need to do is disable WP-Cron's internal processing. Add the following line to your `wp-config.php` file:
 
-````
+```php
 define('DISABLE_WP_CRON', true);
-````
+```
 
 <div class="alert alert-info" role="alert"> <strong>Note:</strong> There are many important tasks that WP-Cron takes care of, so be prepared to complete all the steps below.</div>
 

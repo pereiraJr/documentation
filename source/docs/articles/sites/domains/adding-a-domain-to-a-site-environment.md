@@ -48,11 +48,11 @@ This will not change your DNS configuration. However, if your domain's DNS is st
 Sometimes it's useful to develop on a site using a specific domain, but the overhead of temporarily changing DNS is too much. There is a workaround that will allow your local workstation to access your Pantheon site by domain without changing DNS.
 
 1. From the Pantheon Dashboard, add the domain to the target site environment.
-2. Edit your local [hosts file](http://en.wikipedia.org/wiki/Hosts_(file) #Location_in_the_file_system to include a Pantheon IP address (a record from going live for HTTP, custom load-balanced IP from your Dashboard for HTTPS) and the domain.
+2. Edit your local [hosts file](http://en.wikipedia.org/wiki/Hosts_(file)#Location_in_the_file_system) to include a Pantheon IP address (a record from going live for HTTP, custom load-balanced IP from your Dashboard for HTTPS) and the domain.
 
 Example:
-
+```
     192.237.142.203 puppies.cuddlyfanclub.com
-
+```
 <div class="alert alert-warning" role="alert">
 <strong>Note</strong>: Remember to remove this change when you're done.</div>

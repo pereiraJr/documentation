@@ -58,16 +58,16 @@ There are a few different ways you can install a plugin on a Pantheon hosted Wor
 
 Execute the following [Terminus](https://github.com/pantheon-systems/cli) command to install and activate the Amazon S3 and CloudFront plugin:
 
-```
-terminus wp plugin install amazon-s3-and-cloudfront --activate --site=your-awesome-site --env=dev
+```html
+terminus wp plugin install amazon-s3-and-cloudfront --activate --site=<site> --env=dev
 ```
 
-<div class="alert alert-info" role="alert"> <strong>Note:</strong> Replace <code>your-awesome-site</code> with your specific site name. To see a list of all your Pantheon hosted sites, run <code>terminus sites list</code> </div>
+<div class="alert alert-info" role="alert"> <strong>Note:</strong> Replace <code>&lt;site&gt;</code> with your specific site name. To see a list of all your Pantheon hosted sites, run <code>terminus sites list</code> </div>
 
 In order for the Amazon S3 and CloudFront plugin to function, you must also install the Amazon Web Services plugin:
 
-```
-terminus wp plugin install amazon-web-services --activate --site=your-awesome-site --env=dev
+```html
+terminus wp plugin install amazon-web-services --activate --site=<site> --env=dev
 ```
 
 
@@ -95,7 +95,7 @@ From within your WordPress dashboard:
 
 2. Add the provided code to the `wp-config.php` file located at the web root of your WordPress site using [SFTP](/docs/articles/sites/code/developing-directly-with-sftp-mode/):
 
-  ```
+  ```php
   define( 'AWS_ACCESS_KEY_ID', '********************' );
   define( 'AWS_SECRET_ACCESS_KEY', '****************************************' );
   ```

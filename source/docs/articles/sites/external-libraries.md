@@ -37,14 +37,14 @@ WKHTMLtoPDF can be found on your application server at `/srv/bin/wkhtmltopdf`
 
 ### Drupal
 To install from your local Development environment:
-
-    drush dl print
-    mkdir -p sites/all/libraries/wkhtmltopdf
-    ln -s /srv/bin/wkhtmltopdf sites/all/libraries/wkhtmltopdf/wkhtmltopdf
-    git add .
-    git commit -m "Added WKHTMLtoPDF library"
-    git push
-
+```ruby
+drush dl print
+mkdir -p sites/all/libraries/wkhtmltopdf
+ln -s /srv/bin/wkhtmltopdf sites/all/libraries/wkhtmltopdf/wkhtmltopdf
+git add .
+git commit -m "Added WKHTMLtoPDF library"
+git push
+```
 
 ### WordPress
 Currently, there are no known plugins that implement WKHTMLtoPDF directly. However, you can use the converter by creating a custom plugin or by placing the code within your theme's `functions.php` file.
@@ -78,12 +78,16 @@ Navigate to the Tika settings page at: `/admin/config/search/apachesolr/attachme
 The last step will be to verify that your site is able to extract text from documents, click **Test your Tika Attachments** under the Actions section.
 
 If everything is working correctly, you should see the success message, _"Text can be successfully extracted"_ as shown below.
+
+
 ![](/source/docs/assets/images/desk_images/137839.png)
 ### WordPress Tika Configuration
 There are no known plugins in the WordPress.org repository that will enable the use of Tika. There is a project on GitHub that claims you can use it; however, we are still testing it to make sure it works.
 
 ## [ImageMagick](http://www.imagemagick.org)
 ![](http://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/images/logo-fullsize.png)
+
+
 ImageMagick is a software suite to create, edit, compose, or convert bitmap images. It can read and write images in a variety of  [formats](http://www.imagemagick.org/script/formats.php) (over 100) including  [DPX](http://www.imagemagick.org/script/motion-picture.php),  [EXR](http://www.imagemagick.org/script/high-dynamic-range.php), GIF, JPEG, JPEG-2000, PDF, PNG, Postscript, SVG, and TIFF. Use ImageMagick to resize, flip, mirror, rotate, distort, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.   
 
 

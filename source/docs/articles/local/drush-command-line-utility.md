@@ -35,10 +35,10 @@ Adding Pantheon Aliases to your local Drush aliases file will allow you to run D
 
 ### Download with Terminus, the Pantheon CLI
 Once authenticated to Pantheon with `$ terminus auth login`, update your local aliases file.
-```
-    $ terminus sites aliases
-    Pantheon aliases updated. [ok]
-    'drush' cache was cleared [success]
+```ini
+$ terminus sites aliases
+Pantheon aliases updated. [ok]
+'drush' cache was cleared [success]
 ```
 ### Manually Download and Move the File
 
@@ -62,16 +62,16 @@ Drush will search for aliases in any of these files using the alias search path.
 
 When the aliases have been installed, clear the Drush cache:
 
-```
-$ drush cc drush
+```nginx
+drush cc drush
 ```
 
 ## Listing Available Site Aliases
 
 Once the Pantheon Drush aliases have been copied, verify that the site aliases are available by listing every site alias known to Drush:
 
-```
-$ drush sa
+```nginx
+drush sa
 ```
 
 ## Executing a Drush Command on a Pantheon Site Environment
@@ -81,24 +81,24 @@ Once you see the target site in the list of site aliases, you can execute a comm
     drush @pantheon.SITENAME.ENV COMMAND
 
 For example, to see the status of a site:
-
-    # drush @pantheon.drupal-7-sandbox.dev status
-    Drupal version : 7.10
-    Site URI : dev.drupal-7-sandbox.pantheon.io
-    Database driver : mysql
-    Database hostname : 50.57.231.252
-    Database username : pantheon
-    Database name : pantheon
-    Database : Connected
-    Drupal bootstrap : Successful
-    Drupal user : Anonymous
-    ...
-
+```
+drush @pantheon.drupal-7-sandbox.dev status
+Drupal version : 7.10
+Site URI : dev.drupal-7-sandbox.pantheon.io
+Database driver : mysql
+Database hostname : 50.57.231.252
+Database username : pantheon
+Database name : pantheon
+Database : Connected
+Drupal bootstrap : Successful
+Drupal user : Anonymous
+...
+```
 ## Adding Modules and Themes with Drush
 
 Drush can be a very quick way to set up a new site by adding modules and themes. To use this worklow, first make sure your Dev (or MultiDev) environment is in SFTP mode, allowing Drush to write new files, then use the `dl` command, like so:
 
-    # drush @pantheon.drupal-7-sandbox.dev dl views panels ctools media
+    drush @pantheon.drupal-7-sandbox.dev dl views panels ctools media
     Project views (7.x-3.7) downloaded to [success]
     /srv/bindings/xxx/code/sites/all/modules/views.
     Project views contains 2 modules: views, views_ui.
@@ -209,68 +209,64 @@ If you experience problems with any Drush commands, try executing them with the 
 ### Drush Commands on Remote Aliases Not Working from Inside Local Drupal Install
 
 Some Drush 5 commands need to be executed from outside the context of a local Drupal installation, due to a known issue with Drush 5: [https://github.com/drush-ops/drush/issues/313](https://github.com/drush-ops/drush/issues/313). The output from a Drush 5 command run in this context looks like the following:
-
-    $ drush @pantheon.SITENAME.ENV status
-     PHP configuration : /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/php53.in
-                            i
-                            /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/php53.in
-                            i
-     Drush version : 5.10.0
-     Drush : /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/drushrc.
-     configuration php
-
+```nginx
+$ drush @pantheon.SITENAME.ENV status
+  PHP configuration :
+    /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/php53.ini
+    /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/php53.ini
+  Drush version : 5.10.0
+  Drush :
+    /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/drushrc.
+  configuration php
+```
 To make your Drush 5 commands work on Pantheon aliases, change your directory to a context outside of a working local Drupal installation:
-
-    $ pwd
-    /Users/USERNAME/Sites/SITENAME
-
-
-    $ cd ..
+```
+$ pwd
+  /Users/USERNAME/Sites/SITENAME
 
 
-    $ pwd
-    /Users/USERNAME/Sites/
+$ cd ..
 
 
-    $ drush @pantheon.SITENAME.ENV status
-     Drupal version : 7.26
-     Site URI : ENV-SITENAME.pantheon.io
-     Database driver : mysql
-     Database hostname : 10.178.14.16
-     Database username : pantheon
-     Database name : pantheon
-     Database : Connected
-     Drupal bootstrap : Successful
-     Drupal user : Anonymous
-     Default theme : bartik
-     Administration theme : seven
-     PHP configuration : /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/php5
-                               3.ini
-                               /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/php5
-                               3.ini
-     Drush version : 5.10.0
-     Drush configuration : /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/drus
-                               hrc.php
-     Drupal root : /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/code
-     Site path : sites/default
-     File directory path : sites/default/files
-     Private file : sites/default/files/private
-     directory path
-     Temporary file : /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/tmp
-     directory path
+$ pwd
+  /Users/USERNAME/Sites/
 
+
+$ drush @pantheon.SITENAME.ENV status
+  Drupal version : 7.26
+  Site URI : ENV-SITENAME.pantheon.io
+  Database driver : mysql
+  Database hostname : 10.178.14.16
+  Database username : pantheon
+  Database name : pantheon
+  Database : Connected
+  Drupal bootstrap : Successful
+  Drupal user : Anonymous
+  Default theme : bartik
+  Administration theme : seven
+  PHP configuration : /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/php53.ini
+  /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/php53.ini
+  Drush version : 5.10.0
+  Drush configuration : /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/drushrc.php
+  Drupal root : /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/code
+  Site path : sites/default
+  File directory path : sites/default/files
+  Private file : sites/default/files/private
+  directory path
+  Temporary file : /srv/bindings/754cbef0a7b54a07ab07167ef8de7377/tmp
+  directory path
+```
 ### Drush Error: "Unknown option: --db-url"
-
-    $ drush @pantheon.SITENAME.ENV cc all
-    Unknown option: --db-url. See `drush help cache-clear` for available [error]
-    options. To suppress this error, add the option --strict=0.
-
+```nginx
+drush @pantheon.SITENAME.ENV cc all
+Unknown option: --db-url. See `drush help cache-clear` for available [error] options. To suppress this error, add the option --strict=0.
+```
 To resolve this error, take the suggestion and add the option `--strict=0`.
-
-    $ drush @pantheon.SITENAME.ENV cc all --strict=0
-    'all' cache was cleared in [success]
-    /srv/bindings/BINDINGID/code#ENV-SITENAME.pantheon.io
-
+```nginx
+drush @pantheon.SITENAME.ENV cc all --strict=0
+'all' cache was cleared in [success]
+/srv/bindings/BINDINGID/code<ENV-SITENAME>.pantheon.io
+```
 ### Drush Error: "Could not find a Drupal settings.php file" or missing system information from status
 
     Could not find a Drupal settings.php file at ./sites/default/settings.php
@@ -280,56 +276,55 @@ To resolve, add a default or empty `sites/default/settings.php` to your site's c
 ### Unable to Connect to drush.in Hostnames (DNS)
 
 Some ISPs have issues resolving a drush.in hostname; if you're having trouble connecting to a drush.in hostname, you can use the `dig` command to investigate further.
+```nginx
+$ dig appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in
+;; Truncated, retrying in TCP mode.
 
-    $ dig appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in
-    ;; Truncated, retrying in TCP mode.
-
-
-    ; <<>> DiG 9.8.1-P1 <<>> appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in
-    ;; global options: +cmd
-    ;; Got answer:
-    ;; ->>HEADER<<- opcode: QUERY, status: REFUSED, id: 38905
-    ;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
-
-
-    ;; QUESTION SECTION:
-    ;appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in. IN A
+; <<>> DiG 9.8.1-P1 <<>> appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: REFUSED, id: 38905
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
 
 
-    ;; Query time: 11 msec
-    ;; SERVER: 127.0.0.1#53(127.0.0.1)
-    ;; WHEN: Thu Aug 30 12:28:25 2012
-    ;; MSG SIZE rcvd: 78
+;; QUESTION SECTION:
+;appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in. IN A
 
+
+;; Query time: 11 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1)
+;; WHEN: Thu Aug 30 12:28:25 2012
+;; MSG SIZE rcvd: 78
+```
 As you can see in the output above, the status: REFUSED suggests improper resolution. The next step is to run `dig` with a specified DNS server. We recommend using Google's DNS (8.8.8.8):
-
-    $ dig @8.8.8.8 appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in
-    ;; Truncated, retrying in TCP mode.
-
-
-    ; <<>> DiG 9.8.1-P1 <<>> @8.8.8.8 appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in
-    ; (1 server found)
-    ;; global options: +cmd
-    ;; Got answer:
-    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 36494
-    ;; flags: qr rd ra; QUERY: 1, ANSWER: 34, AUTHORITY: 0, ADDITIONAL: 0
+```nginx
+$ dig @8.8.8.8 appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in
+;; Truncated, retrying in TCP mode.
 
 
-    ;; QUESTION SECTION:
-    ;appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in. IN A
+; <<>> DiG 9.8.1-P1 <<>> @8.8.8.8 appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 36494
+;; flags: qr rd ra; QUERY: 1, ANSWER: 34, AUTHORITY: 0, ADDITIONAL: 0
 
 
-    ;; ANSWER SECTION:
-    appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in. 599 IN A 67.207.144.213
-    ...
-    appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in. 599 IN A 67.207.143.122
+;; QUESTION SECTION:
+;appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in. IN A
 
 
-    ;; Query time: 52 msec
-    ;; SERVER: 8.8.8.8#53(8.8.8.8)
-    ;; WHEN: Thu Aug 30 13:02:00 2012
-    ;; MSG SIZE rcvd: 622
+;; ANSWER SECTION:
+appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in. 599 IN A 67.207.144.213
+...
+appserver.live.38f2bd91-0000-46cb-9278-0000000000000.drush.in. 599 IN A 67.207.143.122
 
+
+;; Query time: 52 msec
+;; SERVER: 8.8.8.8#53(8.8.8.8)
+;; WHEN: Thu Aug 30 13:02:00 2012
+;; MSG SIZE rcvd: 622
+```
 In this example, Google's DNS is able to properly resolve the drush.in hostname.
 
 You can adjust your local settings to use Google's DNS (8.8.8.8) instead of the default provided by your ISP to properly resolve the hostnames.

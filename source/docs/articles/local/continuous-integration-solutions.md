@@ -24,11 +24,11 @@ Terminus can be used for scripting many operations. For example, a post-commit h
 [SimpleTest](https://drupal.org/project/simpletest) is a testing framework based on the [SimpleTest PHP library](http://simpletest.sourceforge.net/) that is included with Drupal core. If you are creating a custom web application, you should consider including SimpleTests of your module functionality.
 
 After enabling the SimpleTest module, you can use Drush to remotely execute SimpleTest on your Pantheon site. For example, if you wanted to execute the UserSaveTestCase test and generate XML output into a writeable directory, use the following command:
-
-    SITE_NAME=yoursitename
-    ENV=dev
-    drush @pantheon.$SITE_NAME.$ENV test-run -l http://$ENV-$SITE_NAME.pantheon.io/ UserSaveTestCase --xml='sites/default/files'
-
+```
+SITE_NAME=yoursitename
+ENV=dev
+drush @pantheon.$SITE_NAME.$ENV test-run -l http://$ENV-$SITE_NAME.pantheon.io/ UserSaveTestCase --xml='sites/default/files'
+```
 The end results would be written to http://dev-yoursitename.pantheon.io/sites/default/files/UserSaveTestCase.xml
 
 ## Known Limitations
