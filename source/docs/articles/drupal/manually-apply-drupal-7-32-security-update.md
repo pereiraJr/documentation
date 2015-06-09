@@ -20,28 +20,26 @@ If your Drupal 7 site is based on the Pantheon Drupal 7 upstream, you will be ab
  
 
 For example, from your local machine:
-
-    $ cd panopoly-site/includes/database/
-
-
-    $ git pull origin master
+```nginx
+$ cd panopoly-site/includes/database/
 
 
-    $ curl -O https://github.com/drupal/drupal/commit/26a7752c34321fd9cb889308f507ca6bdb777f08.patch
+$ git pull origin master
 
 
-    $ patch -p1 < 26a7752c34321fd9cb889308f507ca6bdb777f08.patch
+$ curl -O https://github.com/drupal/drupal/commit/26a7752c34321fd9cb889308f507ca6bdb777f08.patch
 
 
-    File to patch: database.inc
+$ patch -p1 < 26a7752c34321fd9cb889308f507ca6bdb777f08.patch
+File to patch: database.inc
 
 
-    $ git add database.inc
+$ git add database.inc
 
 
-    $ git commit -m "Manually apply Drupal 7.32 security patch"
+$ git commit -m "Manually apply Drupal 7.32 security patch"
 
 
-    $ git push origin master
-
+$ git push origin master
+```
  

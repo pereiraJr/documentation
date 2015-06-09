@@ -50,7 +50,7 @@ If this happens often, a workaround would be to place the following at the top o
 
 then closing the condition with the corresponding bracket at the bottom:
 
-}
+    }
 
 
 #### How do I clear the APC opcode cache?
@@ -60,10 +60,10 @@ Sometimes, due to (very rare) corruption, the APC opcode cache will need to be c
 ##### Manual
 
 To do this manually, write a small script named <tt>apc_cache_clear.php</tt> in your root directory with the following contents:
-
-    <?php
-    apc_clear_cache();
-
+```php
+<?php
+apc_clear_cache();
+```
 Then browse to http://dev.YOURSITE.pantheon.io/apc_cache_clear.php to clear the opcode cache.</yoursite>
 
 ##### Dashboard

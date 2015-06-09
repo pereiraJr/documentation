@@ -117,8 +117,9 @@ When you import your site or enable some new modules, PHP notices may be reporte
 
 An example notice might look like this:
 
-    Notice: Undefined index: description in theme_imagefield_image_imagecache_lightbox2() (line 163 of /srv/bindings/xxxxxxxxx/code/sites/all/modules/contrib/lightbox2/lightbox2.formatter.inc)..
-
+```php
+Notice: Undefined index: description in theme_imagefield_image_imagecache_lightbox2() (line 163 of /srv/bindings/xxxxxxxxx/code/sites/all/modules/contrib/lightbox2/lightbox2.formatter.inc)..
+```
 Why is PHP reporting this?
 
 Variable declaration is not required by PHP, but is a recommended practice that can help to avoid security vulnerabilities or bugs if one forgets to provide a value to a variable that be used later on. PHP issues an E\_NOTICE, a very low-level error, as a reminder.
@@ -130,7 +131,7 @@ No one is going to twist your arm about addressing these notices, but Pantheon b
 The require\_once() function simply checks to see if a file has been included already, if it has not, then it will be included when checked.
 
 When this error surfaces, it simply means that the file in question is not where it should be. For example, the error will look something like this:
-
-    Fatal error: require_once(): Failed opening required ‘/srv/bindings/xxxxx/code/sites/all/modules/redis/redis.autoload.inc’ (include_path=‘.:/usr/share/pear:/usr/share/php’) in /srv/bindings/xxxxxx/code/includes/bootstrap.inc on line 2394
-
+```php
+Fatal error: require_once(): Failed opening required ‘/srv/bindings/xxxxx/code/sites/all/modules/redis/redis.autoload.inc’ (include_path=‘.:/usr/share/pear:/usr/share/php’) in /srv/bindings/xxxxxx/code/includes/bootstrap.inc on line 2394
+```
 To fix this error, look for the correct path to the file and update the require\_once().

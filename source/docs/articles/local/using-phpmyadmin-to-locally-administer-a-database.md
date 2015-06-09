@@ -23,20 +23,20 @@ Alternatively, you can download a zip archive of the latest code from the GitHub
 Since version 1.4.2, PHPMyAdmin added support for administration of multiple MySQL servers. To create a new connection, create a copy of config.sample.inc.php and rename this to config.php.
 
 Add the necessary parameters for the environment's MySQL connection. These can be found on the "Connection Information" widget available on the site's Dashboard above the code log:
-
-    /* Authentication type */
-    $cfg['Servers'][$i]['auth_type'] = 'config';
-    /* Server parameters */
-    $cfg['Servers'][$i]['host'] = 'dbserver.dev.70f6d692-530d-4420-b3a5-79e0187602ca.drush.in';
-    $cfg['Servers'][$i]['user'] = 'pantheon';
-    $cfg['Servers'][$i]['port'] = '14411';
-    $cfg['Servers'][$i]['password'] = '1ed7d4c6af8947c0937f2238731fee88';
-    $cfg['Servers'][$i]['connect_type'] = 'tcp';
-    $cfg['Servers'][$i]['compress'] = false;
-    /* Select mysql if your server does not have mysqli */
-    $cfg['Servers'][$i]['extension'] = 'mysqli';
-    $cfg['Servers'][$i]['AllowNoPassword'] = false;
-
+```sql
+/* Authentication type */
+$cfg['Servers'][$i]['auth_type'] = 'config';
+/* Server parameters */
+$cfg['Servers'][$i]['host'] = 'dbserver.dev.70f6d692-530d-4420-b3a5-79e0187602ca.drush.in';
+$cfg['Servers'][$i]['user'] = 'pantheon';
+$cfg['Servers'][$i]['port'] = '14411';
+$cfg['Servers'][$i]['password'] = '1ed7d4c6af8947c0937f2238731fee88';
+$cfg['Servers'][$i]['connect_type'] = 'tcp';
+$cfg['Servers'][$i]['compress'] = false;
+/* Select mysql if your server does not have mysqli */
+$cfg['Servers'][$i]['extension'] = 'mysqli';
+$cfg['Servers'][$i]['AllowNoPassword'] = false;
+```
 Once this is done, the permissions on the config.php should be set to at least 755. This can be done via a GUI or using the command line:
 
     chmod 755 config.inc.php

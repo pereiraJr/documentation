@@ -6,10 +6,10 @@ category:
 keywords: port 2222, ssh tunnel, port, port numbers
 ---
 In order to push and pull code to your Pantheon site you'll need access to port 2222. If for some reason this port isn't open to you, either because of a corporate firewall or router configuration, you'll get an error resembling the following:
-
-    SSH: connect to host codeserver.dev.<site UUID>.drush.in port 2222: No route to host
-    Fatal: Could not read from remote repository.
-
+```bash
+SSH: connect to host codeserver.dev.<site UUID>.drush.in port 2222: No route to host
+Fatal: Could not read from remote repository.
+```
 ## Prerequisites
 
 You can use an SSH tunnel to get around this barrier. In order to set this up you'll need SSH access to an another server somewhere outside of your network that can access port 2222 and reach Pantheon's git servers. Once you get the command to open a tunnel working, keep it handy somewhere because you'll need to open the tunnel before performing any remote Git operations.
@@ -17,13 +17,13 @@ You can use an SSH tunnel to get around this barrier. In order to set this up yo
 ## Set Up the Tunnel
 
 Open a terminal window where you'll initiate the SSH tunnel. The form of the command is:
-
-    ssh -L<local port #>:<pantheon server>:<pantheon port> user@other-server.com
-
+```bash
+ssh -L<local port #>:<pantheon server>:<pantheon port> user@other-server.com
+```
 Following is an example with some Pantheon credentials plugged in (site UUID omitted), note you can use the port numbers from this example, at a minimum, you'll need to leave port 2222 in place.
-
-    ssh -L3333:codeserver.dev.<site UUID>.drush.in:2222 user@other-server.com
-
+```bash
+ssh -L3333:codeserver.dev.<site UUID>.drush.in:2222 user@other-server.com
+```
 You should now be logged in to the other server, but simultaneously you've just set up your local port 3333 as a tunnel to your Pantheon Git repo.
 
 ## Clone the Repo

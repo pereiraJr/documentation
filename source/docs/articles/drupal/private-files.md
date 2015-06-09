@@ -31,13 +31,13 @@ If you receive the above error, you may need to visit and re-submit the file sys
 ### Selectively Exposing Code
 
 In the case where you have a private code library which needs to have a specific sub-directory exposed (e.g. using SimpleSamlPHP), you can do this with symlinks:
-
-    # from within a git checkout
-    ln -s private/simplesamlphp/www ./simplesaml
-    git add simplesaml
-    git commit simplesaml -m "adding simplesaml symlink"
-    git push origin master
-
+```bash
+# from within a git checkout
+ln -s private/simplesamlphp/www ./simplesaml
+git add simplesaml
+git commit simplesaml -m "adding simplesaml symlink"
+git push origin master
+```
 The result will be a web-accessible URL at http://dev.yoursite.pantheon.io/simplesaml which will point to the code in `/private/simplesamlphp/www`.
 
 ### Commerce Kickstart or Ubercart Key Path Between Environments
@@ -47,13 +47,13 @@ This depends on the workflow and that you are planning to implement. If you set 
 In the event you do not sync the databases you may get some errors as there is a system check in Drupal to verify that directory is writable before that variable is set which can cause errors. However, because you have already pushed that up in code, setting that variable in Test or Live will do the trick.
 
 This can be done via [Terminus](https://github.com/pantheon-systems/cli):
-
-    # Set this to Test/Live
-    $: terminus drush --site=<site> --env=<env> vset uc_credit_encryption_path 'private'
-    # verify the path is set on Test/Live
-    $: terminus drush --site=<site> --env=<env> vget uc_credit_encryption_path
-    uc_credit_encryption_path: "private"
-
+```html
+# Set this to Test/Live
+$: terminus drush --site=<site> --env=<env> vset uc_credit_encryption_path 'private'
+# verify the path is set on Test/Live
+$: terminus drush --site=<site> --env=<env> vget uc_credit_encryption_path
+uc_credit_encryption_path: "private"
+```
 
 <div class="alert alert-info" role="alert">
 <strong>Note</strong>: We do not encourage developers save credit card info on the platform but we do realize that for development this may be useful if you need a test payment method.

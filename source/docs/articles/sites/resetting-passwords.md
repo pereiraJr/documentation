@@ -11,9 +11,9 @@ If you need to reset your Pantheon Dashboard user password, [visit this page](ht
 ## Drupal Site User Login
 
 If you need to reset your Drupal site user login, append `/user/password` to your site's URL and follow the directions to reset your password. For example, to reset the password for the development environment of mysite, you would visit the following example link:
-
-    http://dev-mysite.pantheon.io/user/password
-
+```http
+http://dev-mysite.pantheon.io/user/password
+```
 In the password reset form, enter either the username or email address you used to sign up for the administrative account, and you will receive an email with a link. When you click the link in your email, you will be logged in to your site and brought to your user profile edit page, where you can reset your password. You need to enter your new password at this point. Don’t leave the page without setting a new password, or else you will have to go through this  process again the next time you want to login to your Drupal site.
 
 Please keep in mind that your site password is stored in a database, so whatever you set in the Development environment may be different than Test or live, unless you keep the database content synced between the environments using the Pantheon Dashboard workflow tools or during deployment.
@@ -37,12 +37,12 @@ You will receive an email that contains a link you can use one time to reset you
 
 If you have access to the site view Terminus, you can also reset any user's password from the command line.
 
+```html
+$ terminus wp user update --user_pass=<newpassword> --site=<site> --env=<dev>
 ```
-$ terminus wp user update \
-           --user_pass=NEWPASSWORD \
-           --site=YOUR-PANTHEON-SITE-NAME
-           --env=dev|test|live
-```
+<div class="alert alert-info" role="alert">
+<strong>Note</strong>: Replace <code>&lt;site&gt;</code> with your site name and <code>&lt;newpassword&gt;</code> with your desired password. You can see a list of all your sites by running <code>terminus sites list</code></div>
+
 
 As with most terminus commands, you have to give the site's name and the environment you want to make the change in.
 
